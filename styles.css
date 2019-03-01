@@ -1,0 +1,149 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+#header {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+#contact-info {
+    background-color: tan;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    z-index: 99;
+    width: 100%
+}
+
+#contact-info span {
+    font-size: 1.2em;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+}
+
+#item-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+  
+.item {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+    color: gray;
+    margin: 25px 0;
+    cursor: pointer;
+}
+
+.clip {
+    clip-path: inset(3%);
+}
+
+@media screen and (min-width: 320px) {
+    .item {
+        width: 100%;
+    }
+    #header img {
+        height: 40vh;
+        opacity: .7;
+    }
+    #title-container {
+        position: absolute;  
+        left: 50%;
+        top: 25%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-weight: lighter;
+    }
+    #title {
+        font-size: 2em;
+        margin: 0;
+    }
+    #sub-title {
+        width: 700px;
+        font-size: 1em;
+        letter-spacing: .3em;
+        margin: 10px 0;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .item {
+        width: 100%;
+    }
+    #header img {
+        height: 60vh;
+        opacity: .7;
+    }
+    #title-container {
+        position: absolute;
+        left: 50%;
+        top: 35%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-weight: lighter;
+    }
+    #title {
+        font-size: 3em;
+        margin: 0;
+    }
+    #sub-title {
+        width: 1000px;
+        font-size: 1.5em;
+        letter-spacing: .5em;
+        margin: 10px 0;
+    }
+}
+
+@media screen and (min-width: 1224px) {
+    .item {
+        width: 50%;
+    }
+    #header img {
+        height: 90vh;
+        opacity: .7;
+    }
+    #title-container {
+        position: absolute;  
+        left: 50%;
+        top: 45%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-weight: lighter;
+    }
+    #title {
+        font-size: 5em;
+        margin: 0;
+    }
+    #sub-title {
+        width: 2000px;
+        font-size: 2em;
+        letter-spacing: .7em;
+        margin: 10px 0;
+    }
+}
+
+.item-details-short {
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+    display: none;
+}
+
+.selected img {
+    opacity: .5;
+}
+
+#footer {
+    text-align: center;
+    color: gray;
+}
