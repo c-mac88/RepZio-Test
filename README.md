@@ -9,3 +9,4 @@
 2. Navigate to this folder in your command line or terminal
 3. Run `$ npm install`
 4. Run `$ node index.js`
+5. Navigate to http://localhost:3000 in your browser
