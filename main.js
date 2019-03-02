@@ -12,20 +12,19 @@ function getItemDescription(item) {
 let currentlySelectedId;
 
 $(document).ready(function () {
-    $.getJSON("data.json", function (result) {
-        var manufacturerId = result.ManufacturerID;
+    $.getJSON("data.json", function (data) {
+        var manufacturerId = data.ManufacturerID;
 
-        // append title subtitle and logo
-        $("#title").append(result.CompanyName);
+        // append title and logo
+        $("#title").append(data.CompanyName);
         $("#logo").append('<img src="https://images.repzio.com/productimages/' + manufacturerId + '/logo' + manufacturerId + '_lg.jpg" />');
 
         // populate the product thumbnails
-        $(result.items).each(function (index, item) {
+        $(data.items).each(function (index, item) {
             $("#item-container").append(
                 '<div class="item"' + 'id="' + item.ItemID.replace(" ", "") + '">' +
-                    '<img src=' + item.PhotoName + '?w=300&h=300' + getClass(item) + '/>' +
+                    '<div><img src=' + item.PhotoName + '?w=300&h=300' + getClass(item) + '/></div>' +
                     '<div class="item-details-short">' +
-                        '<h1>$' + item.BasePrice + '</h1>' +
                         '<h2>' + item.ItemName + '</h2>' +
                         '<h3>Dimensions: ' + item.Dimensions + '</h3>' +
                     '</div>' +
@@ -49,7 +48,7 @@ $(document).ready(function () {
 
 
         // attach sales rep info
-        var info = result.SalesRep;
+        var info = data.SalesRep;
         $("#contact-info-details").append(
             '<span>Contact ' + info.FirstName + ' ' + info.LastName + ' to place an order &#183</span> ' +
             '<span> ' + info.FirstName + ' ' + info.LastName + ' &#183</span>' +
@@ -58,16 +57,16 @@ $(document).ready(function () {
             '<span> <a href="tel:' + info.Phone + '">' + info.Phone + '</a></span>');
 
 
-        // handle when the items get hovered over
-        $(".item").hover(function () {
-            var selectedId = $(this).attr('id');
-            $(this).attr("class", "item selected");
-            $("#" + selectedId + " div").show();
-        }, function () {
-            var selectedId = $(this).attr('id');
-            $(this).attr("class", "item");
-            $("#" + selectedId + " div").hide();
-        });
+        // // handle when the items get hovered over
+        // $(".item").hover(function () {
+        //     var selectedId = $(this).attr('id');
+        //     $(this).attr("class", "item selected");
+        //     $("#" + selectedId + " div").show();
+        // }, function () {
+        //     var selectedId = $(this).attr('id');
+        //     $(this).attr("class", "item");
+        //     $("#" + selectedId + " div").hide();
+        // });
 
 
         // handle when item gets clicked
