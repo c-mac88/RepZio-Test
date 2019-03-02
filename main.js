@@ -23,10 +23,9 @@ $(document).ready(function () {
         $(data.items).each(function (index, item) {
             $("#item-container").append(
                 '<div class="item"' + 'id="' + item.ItemID.replace(" ", "") + '">' +
-                    '<div><img src=' + item.PhotoName + '?w=300&h=300' + getClass(item) + '/></div>' +
+                    '<div><img src=' + item.PhotoName + '?w=500&h=500' + getClass(item) + '/></div>' +
                     '<div class="item-details-short">' +
                         '<h2>' + item.ItemName + '</h2>' +
-                        '<h3>Dimensions: ' + item.Dimensions + '</h3>' +
                     '</div>' +
                 '</div>');
 
@@ -51,7 +50,6 @@ $(document).ready(function () {
         var info = data.SalesRep;
         $("#contact-info-details").append(
             '<span>Contact ' + info.FirstName + ' ' + info.LastName + ' to place an order &#183</span> ' +
-            '<span> ' + info.FirstName + ' ' + info.LastName + ' &#183</span>' +
             '<span> ' + info.City + ', ' + info.State + ' ' + info.PostalCode + ' &#183</span>' +
             '<span> <a href="mailto:' + info.EmailAddress + '">' + info.EmailAddress + '</a> &#183</span>' +
             '<span> <a href="tel:' + info.Phone + '">' + info.Phone + '</a></span>');
