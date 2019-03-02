@@ -7,8 +7,8 @@ const app = express();
 app.use(express.static(path.join(__dirname)));
 
 // serve index.html at base path
-app.get('/', function(req, res) {
-    res.sendFile('index.html');
+app.get('/*', function(req, res) {
+    res.sendFile(path.join(__dirname)+'/index.html');
 });
 
 // start the server

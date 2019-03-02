@@ -1,105 +1,66 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
 }
-
-#header {
+  
+#container {
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+  
+#header {
+    flex: 1;
+    padding: 10px;
+    height: 100%;
     text-align: center;
 }
 
-#contact-info {
-    display: flex;
-    justify-content: center;
-    background-color: tan;
+#products {
+    flex: 2;
     padding: 10px;
-    color: white;
-    text-align: left;
-    z-index: 99;
-    width: 100%
-}
-
-#contact-info span {
-    font-size: 2em;
-}
-
-#contact-info span a {
-    color: white;
-    text-decoration: none;
-}
-
-.sticky {
-    position: fixed;
-    top: 0;
+    height: 100%;
+    text-align: center;
 }
 
 #item-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    overflow-y: scroll;
+    max-height: 90vh;
 }
 
 .item {
-    width: 100%;
+    width: 50%;
     text-align: center;
-    margin-bottom: 50px;
+    cursor: pointer;
 }
 
-@media screen and (min-width: 1000px) {
+.item-details-long {
+    padding: 0 100px 0 50px;
+    text-align: left;
+    margin-bottom: 100px;
+}
+
+.item-details {
+    margin-top: 100x;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
     .item {
-        width: 50%;
+        width: 100%;
     }
 }
 
-#item-detail-container {
-    display: flex;
-    justify-content: center;
-}
-
-.detail-item {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.clip {
-    clip-path: inset(3%);
-}
-
-.item-details-short h1, h2, h3 {
-    margin: 5px 0;
-}
-
-.selected img {
-    opacity: .4;
-}
-
-#back-button {
+::-webkit-scrollbar {
     display: none;
 }
 
-#logo img {
-    height: 50px;
-}
-
-button {
-    background-color: tan;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 5px;
-}
-
-#footer {
-    text-align: center;
-    color: gray;
-}
-
-#footer p {
-    margin-top: 0;
+.clip {
+    clip-path: inset(3.5%);
 }
