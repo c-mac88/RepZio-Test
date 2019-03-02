@@ -47,10 +47,10 @@ $(document).ready(function () {
         // attach sales rep info
         var info = data.SalesRep;
         $("#contact-info-details").append(
-            '<p>Contact ' + info.FirstName + ' ' + info.LastName + ' to place an order</p> ' +
-            '<p><span> <a href="mailto:' + info.EmailAddress + '">' + info.EmailAddress + '</a> &#183</span>' +
-            '<span> <a href="tel:' + info.Phone + '">' + info.Phone + '</a></span></p>' +
-            '<span> ' + info.City + ', ' + info.State + ' ' + info.PostalCode + ' </span>');
+            '<h2>Contact ' + info.FirstName + ' ' + info.LastName + ' to place an order</h2> ' +
+            '<h2><span> <a href="mailto:' + info.EmailAddress + '">' + info.EmailAddress + '</a> &#183</span>' +
+            '<span> <a href="tel:' + info.Phone + '">' + info.Phone + '</a></span></h2>' +
+            '<span><h3> ' + info.City + ', ' + info.State + ' ' + info.PostalCode + ' </h3></span>');
 
 
         // handle when item gets clicked
