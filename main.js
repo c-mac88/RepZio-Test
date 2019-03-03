@@ -8,9 +8,6 @@ function getItemDescription(item) {
     return item.Description === "" ? "Unfortunately there is no description available for this item. We think the picture is worth a thousand words!" : item.Description
 }
 
-// declare lobal variable used later for selecting an item
-let currentlySelectedId;
-
 $(document).ready(function () {
     $.getJSON("data.json", function (data) {
         var manufacturerId = data.ManufacturerID;
@@ -55,16 +52,17 @@ $(document).ready(function () {
 
         // handle when item gets clicked
         $(".item").click(function() {
-            currentlySelectedId = $(this).attr('id');
-            console.log('currentlySelectedId:::', currentlySelectedId);
+            var currentlySelectedId = $(this).attr('id');
             $("#detail-" + currentlySelectedId).show();
             $(this).hide();
+            $('#products').animate({
+                scrollTop: $("#detail-" + currentlySelectedId).offset().top - $('#products').offset().top + $('#products').scrollTop()
+            }, 1000);
         });
 
         $(".item-details").click(function() {
             var selectedId = $(this).attr('id');
             var originalId = selectedId.substring(7, selectedId.length);
-            console.log('originalID:::', originalId);
             $("#" + originalId).show();
             $(this).hide();
         });

@@ -31,13 +31,13 @@ body {
     height: 100%;
     text-align: center;
     min-width: 500px;
+    overflow-y: scroll;
 }
 
 #item-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    overflow-y: scroll;
     max-height: 90vh;
 }
 
@@ -45,6 +45,11 @@ body {
     width: 50%;
     text-align: center;
     cursor: pointer;
+    transition: all, ease-in-out, .2s;
+}
+
+.item:hover {
+    transform: scale(1.05);
 }
 
 .item-details-long {
