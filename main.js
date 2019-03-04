@@ -11,6 +11,26 @@ $(document).ready(function () {
     $.getJSON("data.json", function (data) {
         var manufacturerId = data.ManufacturerID;
 
+        function populateDetails(itemId) {
+            // get the selected item based on ID passed in
+            var item = data.items.find(item => item.ItemID.replace(" ", "") === itemId);
+
+            $("#item-details")  .append(
+            '<div class="item-details-image">' +
+                '<img src=' + item.PhotoName + '?w=400&h400' + getClass(item) + '/>' +
+            '</div>' +
+            '<div class="item-details-long">' +
+                '<p id="less-details-button" >show less</p>' +
+                '<h4>Item ID: ' + item.ItemID + '<h4>' +
+                '<h1>$' + item.BasePrice + '</h1>' +
+                '<h2>' + item.ItemName + '</h2>' +
+                '<h3>Dimensions: ' + item.Dimensions + '</h3>' +
+                '<p>' + getItemDescription(item) + '</p>' +
+            '</div>');
+            
+            $("#footer").attr("class", "detail-view");
+        }
+
         // append title and logo
         $("#title").append(data.CompanyName);
         $("#logo").append('<img src="https://images.repzio.com/productimages/' + manufacturerId + '/logo' + manufacturerId + '_lg.jpg" />');
@@ -24,21 +44,6 @@ $(document).ready(function () {
                         '<h3>' + item.ItemName + '</h3>' +
                         '<p id="more-details-button" >show more</p>' +
                     '</div>' +
-                '</div>' + 
-                '<div style="display: none;" class="item-details"' + 'id="detail-' + item.ItemID.replace(" ", "") + '">' +
-                    '<hr />' +
-                    '<div class="item-details-image">' +
-                        '<img src=' + item.PhotoName + '?w=400&h400' + getClass(item) + '/>' +
-                    '</div>' +
-                    '<div class="item-details-long">' +
-                        '<p id="less-details-button" >show less</p>' +
-                        '<h4>Item ID: ' + item.ItemID + '<h4>' +
-                        '<h1>$' + item.BasePrice + '</h1>' +
-                        '<h2>' + item.ItemName + '</h2>' +
-                        '<h3>Dimensions: ' + item.Dimensions + '</h3>' +
-                        '<p>' + getItemDescription(item) + '</p>' +
-                    '</div>' +
-                    '<hr />' +
                 '</div>' +
             '</div>');
         });
@@ -55,20 +60,16 @@ $(document).ready(function () {
 
         // handle when item gets clicked
         $(".item").click(function() {
-            var currentlySelectedId = $(this).attr('id');
-            $("#detail-" + currentlySelectedId).show();
-            $(this).hide();
-            $('html, body, #products').animate({
-                scrollTop: $("#detail-" + currentlySelectedId).offset().top - $('#products').offset().top + $('#products').scrollTop()
-            }, 1000);
+            populateDetails($(this).attr("id"));
+            $(".item").hide();
+
         });
 
         // handle closing product details
-        $(".item-details").click(function() {
-            var selectedId = $(this).attr('id');
-            var originalId = selectedId.substring(7, selectedId.length);
-            $("#" + originalId).show();
-            $(this).hide();
+        $("#item-details").click(function() {
+            $("#item-details").html("");
+            $(".item").show();
+            $("#footer").attr("class", "");
         });
     });
 });

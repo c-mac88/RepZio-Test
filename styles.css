@@ -80,13 +80,20 @@ body {
     text-align: left;
 }
 
-.item-details {
-    margin-top: 100x;
+#item-details {
+    margin-top: 100x 0;
     cursor: pointer;
 }
 
 #footer {
     text-align: center;
+}
+
+#footer.detail-view {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 10px;
 }
 
 .clip {
