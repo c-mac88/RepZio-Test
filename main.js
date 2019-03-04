@@ -22,19 +22,23 @@ $(document).ready(function () {
                     '<img src=' + item.PhotoName + '?w=300&h=300' + getClass(item) + '/>' +
                     '<div class="item-details-short">' +
                         '<h3>' + item.ItemName + '</h3>' +
+                        '<p id="more-details-button" >show more</p>' +
                     '</div>' +
                 '</div>' + 
                 '<div style="display: none;" class="item-details"' + 'id="detail-' + item.ItemID.replace(" ", "") + '">' +
+                    '<hr />' +
                     '<div class="item-details-image">' +
                         '<img src=' + item.PhotoName + '?w=400&h400' + getClass(item) + '/>' +
                     '</div>' +
                     '<div class="item-details-long">' +
-                        '<p>Item ID: ' + item.ItemID + '<p>' +
+                        '<p id="less-details-button" >show less</p>' +
+                        '<h4>Item ID: ' + item.ItemID + '<h4>' +
                         '<h1>$' + item.BasePrice + '</h1>' +
                         '<h2>' + item.ItemName + '</h2>' +
                         '<h3>Dimensions: ' + item.Dimensions + '</h3>' +
                         '<p>' + getItemDescription(item) + '</p>' +
                     '</div>' +
+                    '<hr />' +
                 '</div>' +
             '</div>');
         });
@@ -54,7 +58,7 @@ $(document).ready(function () {
             var currentlySelectedId = $(this).attr('id');
             $("#detail-" + currentlySelectedId).show();
             $(this).hide();
-            $('#products').animate({
+            $('html, body, #products').animate({
                 scrollTop: $("#detail-" + currentlySelectedId).offset().top - $('#products').offset().top + $('#products').scrollTop()
             }, 1000);
         });

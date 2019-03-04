@@ -31,18 +31,17 @@ body {
     height: 100%;
     text-align: center;
     min-width: 500px;
-    overflow-y: scroll;
 }
 
 #item-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    max-height: 90vh;
+    justify-content: center;
 }
 
 .item {
-    width: 50%;
+    width: 45%;
     text-align: center;
     cursor: pointer;
     transition: all, ease-in-out, .2s;
@@ -52,22 +51,33 @@ body {
     transform: scale(1.05);
 }
 
-@media screen and (min-width: 300px) {
-    .item {
-        width: 100%;
-    }
+.item h3 {
+    margin: 0;
+}
+
+#more-details-button {
+    margin-top: 0;
+    color: lightgrey;
+}
+
+#less-details-button {
+    margin: 0;
+    color: lightgrey;
+    float: right;
 }
 
 @media screen and (min-width: 1000px) {
-    .item {
-        width: 50%;
+    #products {
+        overflow-y: scroll;
+    }
+    #item-container {
+        max-height: 90vh;
     }
 }
 
 .item-details-long {
     padding: 0 100px 0 50px;
     text-align: left;
-    margin-bottom: 100px;
 }
 
 .item-details {
