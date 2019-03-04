@@ -1,14 +1,13 @@
 // some of the images have a border that needs to be clipped
-function getClass(item) {
-    return item.ItemID === "F141" || item.ItemID === "F31" ? ' class="clip"' : ' ';
-}
+const getClass = (item) => item.ItemID === "F141" || item.ItemID === "F31" ? ' class="clip"' : ' ';
 
 // handle items with no description
-function getItemDescription(item) {
-    return item.Description === "" ? "Unfortunately there is no description available for this item. We think the picture is worth a thousand words!" : item.Description
-}
+const getItemDescription = (item) =>
+    item.Description === "" ? "Unfortunately there is no description available for this item. We think the picture is worth a thousand words!" : item.Description;
 
 $(document).ready(function () {
+
+    // read data from JSON file
     $.getJSON("data.json", function (data) {
         var manufacturerId = data.ManufacturerID;
 
@@ -16,7 +15,7 @@ $(document).ready(function () {
         $("#title").append(data.CompanyName);
         $("#logo").append('<img src="https://images.repzio.com/productimages/' + manufacturerId + '/logo' + manufacturerId + '_lg.jpg" />');
 
-        // populate the product thumbnails
+        // populate the product thumbnails and details
         $(data.items).each(function (index, item) {
             $("#item-container").append(
                 '<div class="item"' + 'id="' + item.ItemID.replace(" ", "") + '">' +
@@ -27,7 +26,7 @@ $(document).ready(function () {
                 '</div>' + 
                 '<div style="display: none;" class="item-details"' + 'id="detail-' + item.ItemID.replace(" ", "") + '">' +
                     '<div class="item-details-image">' +
-                        '<img src=' + item.PhotoName + '?w=450&h=450' + getClass(item) + '/>' +
+                        '<img src=' + item.PhotoName + '?w=400&h400' + getClass(item) + '/>' +
                     '</div>' +
                     '<div class="item-details-long">' +
                         '<p>Item ID: ' + item.ItemID + '<p>' +
@@ -60,6 +59,7 @@ $(document).ready(function () {
             }, 1000);
         });
 
+        // handle closing product details
         $(".item-details").click(function() {
             var selectedId = $(this).attr('id');
             var originalId = selectedId.substring(7, selectedId.length);

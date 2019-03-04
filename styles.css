@@ -52,6 +52,18 @@ body {
     transform: scale(1.05);
 }
 
+@media screen and (min-width: 300px) {
+    .item {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .item {
+        width: 50%;
+    }
+}
+
 .item-details-long {
     padding: 0 100px 0 50px;
     text-align: left;
@@ -63,16 +75,14 @@ body {
     cursor: pointer;
 }
 
-@media screen and (max-width: 600px) {
-    .item {
-        width: 100%;
-    }
-}
-
-::-webkit-scrollbar {
-    display: none;
+#footer {
+    text-align: center;
 }
 
 .clip {
     clip-path: inset(3.5%);
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
