@@ -1,7 +1,5 @@
 # RepZio Test
 
-### http://repzio-test.herokuapp.com/
-
 ## Prerequisutes:
 - Must have Node.js and NPM installed on your computer. You can do that by following this link https://www.npmjs.com/get-npm
 
